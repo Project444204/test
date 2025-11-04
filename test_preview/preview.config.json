@@ -1,0 +1,36 @@
+{
+  "type": "nextjs",
+  "workspace": ".",
+  "services": {
+    "frontend": {
+      "type": "nextjs",
+      "directory": "frontend",
+      "port": 3000,
+      "build_command": "npm run build",
+      "start_command": "npm start",
+      "env": {
+        "NEXT_PUBLIC_API_URL": "/api",
+        "NODE_ENV": "production"
+      }
+    },
+    "backend": {
+      "type": "nodejs",
+      "directory": "backend",
+      "port": 5000,
+      "build_command": "npm ci",
+      "start_command": "npm start",
+      "env": {
+        "NODE_ENV": "production",
+        "CORS_ORIGIN": "*",
+        "PORT": "5000",
+        "HOST": "0.0.0.0",
+        "JWT_SECRET": "test-messaging-app-secret-key-change-in-production"
+      }
+    }
+  },
+  "autofix": {
+    "case_sensitivity": "auto",
+    "scripts": "auto"
+  }
+}
+

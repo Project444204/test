@@ -1,0 +1,10 @@
+{
+  "name": "test-preview",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "echo 'Build handled by preview.config.json'",
+    "start": "echo 'Start handled by preview.config.json'"
+  }
+}
+
