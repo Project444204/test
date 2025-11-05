@@ -1,0 +1,54 @@
+{
+  "build_pack": "dockerfile",
+  "base_directory": "/",
+  "publish_directory": "/",
+  "ports_exposes": "3000,5000",
+  "ports_mappings": "3000:3000,5000:5000",
+  "dockerfile_location": "/Dockerfile",
+  "fqdn": "http://127.0.0.1",
+  "settings": {
+    "is_static": false,
+    "is_spa": false,
+    "is_build_server_enabled": false,
+    "is_preserve_repository_enabled": false,
+    "is_container_label_escape_enabled": true,
+    "is_container_label_readonly_enabled": false,
+    "is_http_basic_auth_enabled": false,
+    "is_auto_deploy_enabled": true,
+    "is_force_https_enabled": false,
+    "is_debug_enabled": false,
+    "is_preview_deployments_enabled": false,
+    "is_pr_deployments_public_enabled": false,
+    "is_git_submodules_enabled": false,
+    "is_git_lfs_enabled": false,
+    "is_git_shallow_clone_enabled": false
+  },
+  "environment_variables": {
+    "HOST": "0.0.0.0",
+    "PORT": "5000",
+    "NODE_ENV": "production",
+    "NEXT_PUBLIC_API_URL": {
+      "value": "http://127.0.0.1:5000/api",
+      "is_buildtime": true,
+      "is_runtime": false
+    },
+    "CORS_ORIGIN": "*",
+    "JWT_SECRET": "test-messaging-app-secret-key-change-in-production"
+  },
+  "health_check": {
+    "health_check_enabled": true,
+    "health_check_path": "/api/health",
+    "health_check_port": "5000",
+    "health_check_method": "GET",
+    "health_check_return_code": 200,
+    "health_check_scheme": "http",
+    "health_check_interval": 30,
+    "health_check_timeout": 10,
+    "health_check_retries": 3,
+    "health_check_start_period": 60
+  },
+  "custom_docker_run_options": "--cap-add SYS_ADMIN --device=/dev/fuse --security-opt apparmor:unconfined --ulimit nofile=1024:1024 --tmpfs /run:rw,noexec,nosuid,size=65536k",
+  "pre_deployment_command": null,
+  "post_deployment_command": null
+}
+
